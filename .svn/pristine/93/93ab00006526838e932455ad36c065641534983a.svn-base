@@ -1,0 +1,17 @@
+Assignment #2
+COSC 4353/6353
+
+Due Date: February 24, 2017 23:59:59
+
+Description: 
+In this assignment we'll use test driven development to create the program we discussed in assignment 1.
+Follow test first coding, don't write any code unless a failing test demands it. Write minimum code to make tests pass. Start early and take very small steps. 
+Keep your tests passing at all times. Keep the design lightweight and the code quality high.
+
+Complete this:
+After the implementation is complete (and only after it's complete), compare the design created in Assignment 1 with the design you described in Homework 1.
+YOUR ANSWER GOES HERE
+
+
+NOTE: 
+Make sure you commit to SVN after each iteration. This will help TA to verify the TDD transition.

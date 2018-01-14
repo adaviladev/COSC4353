@@ -1,0 +1,24 @@
+Assignment# 4
+COSC 6353/4353
+
+Due Date: 04/31/2017 23:59:59
+
+Problem Statement: 
+------------------
+Implement assignment 3 problem.
+
+*Deliverables: (80 points)
+- Working code and test cases to test your code. 
+The code files(.cs) and Test Cases are inside the Assignment4 folder inside the assignment submission folder.
+- README file explaining how to use your code.
+README file is inside the assignment folder.
+
+**Provide answer to these questions: (20 points)
+- Discuss your experience working in pair.
+Ans: Working in pairs was fine. It was a bit of a challenge with the first assignment discussing how to divvy up the work,
+but we figured it all out just fine.
+- Did your design change from assignment 3? Why?
+Ans:Yes, in the original design, we thought of using only AI module for the level 3 game. But during passing the test cases,
+we understood that, when the board is blank, the AI module is not useful to use. All the moves are equally ranked and
+thus the system will be in a dilemma to put the turn. That's why we use random turn for the 1st move in the third level
+game.

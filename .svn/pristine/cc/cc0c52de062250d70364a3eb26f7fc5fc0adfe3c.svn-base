@@ -1,0 +1,28 @@
+import java.util.TimerTask;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
+public class ScheduleRun extends TimerTask{
+	String currencyPair = mainModule.key;
+//	XMLParser x = new XMLParser();
+	@Override
+	public void run() {
+	try {
+		double bid = XMLParser.getList(currencyPair);
+		double targetRate = mainModule.getTarget();
+	if (bid >= targetRate) {
+	System.out.println("Your target price: "+ targetRate+ " has been reached");
+	System.exit(0);
+	}
+//	else {
+//	System.out.println("Your target price: "+ targetRate+ " has not been reached yet");
+//	}
+		} catch (SAXException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		
+	}
+}

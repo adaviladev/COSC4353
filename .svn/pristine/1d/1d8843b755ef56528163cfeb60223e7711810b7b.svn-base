@@ -1,0 +1,116 @@
+package com.tdd.softwaredesign;
+
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+import org.junit.Test;
+
+public class Assignment2Test {
+	
+	
+	@Test
+	public void shouldTakeUserInputTest() {
+	    InputOutput inputOutput= new InputOutput();
+
+	    String input = "08/10/1989";
+	    InputStream in = new ByteArrayInputStream(input.getBytes());
+	    System.setIn(in);
+
+	    assertEquals("08/10/1989", inputOutput.getInput());
+	}
+	@Test
+	public void validDateFormatMMDDYYYYTest()
+	{
+		ValidDate valid= new ValidDate("08/10/1989");
+		assertEquals("True",valid.IsValidDate());
+	}
+	@Test
+	public void InvalidMonthTest()
+	{
+		ValidDate valid= new ValidDate("13/10/1989");
+		assertEquals("False",valid.IsValidDate());
+	}
+	@Test
+	public void InvalidDateTest()
+	{
+		ValidDate valid= new ValidDate("10/32/1989");
+		assertEquals("False",valid.IsValidDate());
+	}
+	@Test
+	public void InvalidYearTest()
+	{
+		ValidDate valid= new ValidDate("10/32/200");
+		assertEquals("False",valid.IsValidDate());
+	}
+	@Test
+	public void ValidInputTest()
+	{
+		ValidDate valid= new ValidDate("10/31/2000");
+		assertEquals("True",valid.IsValidDate());
+	}
+	@Test
+	public void InValidLeapYearTest()
+	{
+		ValidDate valid= new ValidDate("02/29/1999");
+		assertEquals("False",valid.IsValidDate());
+	}
+	@Test
+	public void ValidLeapYearTest()
+	{
+		ValidDate valid= new ValidDate("02/29/2000");
+		assertEquals("True",valid.IsValidDate());
+	}
+	@Test
+	public void DayWeekTest()
+	{
+		WeekDay weekday= new WeekDay("02/19/2017");
+		assertEquals("Sunday",weekday.getDay());
+	}
+	@Test
+	public void zodiacSignTest()
+	{
+		Zodiac zodiac= new Zodiac("02/19/2017");
+		assertEquals("Pisces",zodiac.getZodiac());
+	}
+	@Test
+	public void oneValidInputTest()
+	{
+		Input.counter=0;
+		Input.inputDate="12/12/2000";
+		assertEquals("Valid",Input.checkInput());
+	}
+	@Test
+	public void oneInValidOneValidInputTest()
+	{
+		Input.counter=0;
+		Input.inputDate="13/12/2000";
+		assertEquals("Invalid",Input.checkInput());
+		Input.inputDate="12/12/2000";
+		assertEquals("Valid",Input.checkInput());
+	}
+	@Test
+	public void twoInValidOneValidInputTest()
+	{
+		Input.counter=0;
+		Input.inputDate="13/12/2000";
+		assertEquals("Invalid",Input.checkInput());
+		Input.inputDate="11/31/2000";
+		assertEquals("Invalid",Input.checkInput());
+		Input.inputDate="12/12/2000";
+		assertEquals("Valid",Input.checkInput());
+	}
+	@Test
+	public void threeInvalidInputTest()
+	{
+		Input.counter=0;
+		Input.inputDate="13/12/2000";
+		assertEquals("Invalid",Input.checkInput());
+		Input.inputDate="11/31/2000";
+		assertEquals("Invalid",Input.checkInput());
+		Input.inputDate="12/32/2000";
+		assertEquals("3 Invalid inputs",Input.checkInput());
+	}
+	
+}

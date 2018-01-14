@@ -1,0 +1,68 @@
+Homework #1
+COSC 6353 / 4353
+
+Due Date: February 10, 2017 23:59:59
+
+Description: 
+In this homework we will come up with initial design for a program. 
+We will not be writing any code in this homework, but only looking at some initial design ideas.
+
+Design an application that will perform the following actions:
+1.	Prompt the user and read in user date of birth in (mm/dd/yyyy) format.
+	- Program checks if date is in correct format. Provides proper message if incorrect format is entered and repeats 1.
+	- If user enters wrong data for three consecutive times then system exits with proper notification.
+	
+2.	System prints following summary from the date of birth:
+	- What day of the week they were born? e.g. "You were born on a Friday."
+	- Their Zodiac sign. e.g. "Your zodiac sign is capricorn."
+	
+
+Answer these questions:
+
+1.	How would you design this program?
+	Step 1: Create a counter to indicate the number of attempts
+	Step 2: Create a class that takes a date string, evaluates it and prints the desired output.
+	Step 3: Make a loop that prompts the user for the date in the provided format.
+
+		Step 3.a: System takes the input from the user and save it to a string variable.
+
+		Step 3.b: Check the string variable using Regular expression ("[0-9]{2}/[0-9]{2}/[0-9]{4}") to verify whether the input has proper adherence to the 			format(aa/aa/aaaa).
+
+		Step 3.c: Separate the string based on the "/" delimiter and store the 3 parts in a String array.
+
+		Step 3.d: Initialize an array with stores the number of days of each month (e.g. [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ])
+
+		Step 3.e: Parse every String to Integer and check the validity based on the below scenarios:
+			1. First segment should be greater than 0 and also less than 13.
+			2. Check whether the third segment can be divided 100 or 400 and if it is, then change the array second element which stores the number 				of days in February to 29. If it is not, then do nothing.
+			3. Check the parsed second segment of the string and cross check with the array to verify that the input should not be greater than the 				value in the array for that month.
+
+		Step 3.f: If all the sub steps of the Step 3.e is satisfied then
+			1. Restart the counter
+			2. Initialize a Calendar object and provide the year, month and day of the input and it returns the day of the week of the input signal.
+			3. Print the desired message based on the output from the previous process.(E.g. "You were born on a Friday.")
+			4. Based on the input month and day figure of the zodiac sign of the person. (e.g. if the date is between 12/22 and 01/19 then the zodiac sign 				will be “Capricorn”)
+			5. Print the desired message with the zodiac sign. e.g. "Your zodiac sign is Capricorn."
+			6. Exit the loop and function.
+
+		Step 3.g: If all the sub steps of the Step 3.e are not satisfied then
+			1.       Increment the counter.
+			2.       If the counter is 3 then system prints an error message and exits function.
+
+
+2.	Discuss what programming language you would use.
+	Java
+
+3.	How you'd structure the program, what libraries you'd use?
+	Libraries:
+   		java.util.*;
+		java.text.ParseException;
+		java.text.SimpleDateFormat;
+		java.util.Calendar;
+		java.util.Date;
+		java.util.Scanner;
+		java.io.*
+		java.text.*;
+	Class:
+		softwareDesignAssignment.java
+NOTE: Include a separate file (may be a scan of hand drawn picture if you like, or a PDF, tiff, word document, etc.) which shows a UML diagram of your design.

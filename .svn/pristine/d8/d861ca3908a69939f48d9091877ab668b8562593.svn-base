@@ -1,0 +1,17 @@
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created on 2/19/2017.
+ */
+public class ZodiacTest {
+	@Test
+	public void testGetSign() {
+		Zodiac zodiac = new Zodiac();
+
+		String sign = zodiac.getSign( "date" );
+
+		assertEquals( "Test Result", "date", sign );
+	}
+}

@@ -1,0 +1,9 @@
+public class Rate {
+	public String symbol;
+	public float bid;
+	public float ask;
+	public float high;
+	public float low;
+	public int direction;
+	public String last;
+}

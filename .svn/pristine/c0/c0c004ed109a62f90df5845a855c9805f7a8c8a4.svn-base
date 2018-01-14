@@ -1,0 +1,34 @@
+Assignment #2
+COSC 4353/6353
+
+Due Date: February 24, 2017 23:59:59
+
+Description: 
+In this assignment we'll use test driven development to create the program we discussed in assignment 1.
+Follow test first coding, don't write any code unless a failing test demands it. Write minimum code to make tests pass. Start early and take very small steps. 
+Keep your tests passing at all times. Keep the design lightweight and the code quality high.
+
+Complete this:
+After the implementation is complete (and only after it's complete), compare the design created in Assignment 1 with the design you described in Homework 1.
+YOUR ANSWER GOES HERE
+
+In this exercise, we refer the problem from assignment 1 and continue developing the same using TDD method. In the assignment 2, we built the design based on the test cases prepared. During designing through conventional method, we created a single class and put all the methods under that. But during creating through TDD method, we built a class for every functionality which makes the design more robust and flexible.
+
+Also, previously we thought that for checking valid date we need to check an array where the number of days will be stored for every month. But building the solution through TDD, we came up with an idea of using Calendar class which is easier for checking valid date. Also by conventional method, we need to write different logic for leap years but with the solution we came up through TDD method, we don’t have to use separate logic for checking leap year.
+The reduction of unnecessary codes and making the code more compact and lightweight, TDD driven method is really helpful, because here we just had to write the codes for necessary functionalities.
+ 
+Class Name and their functionalities:
+Assignment2_Test          - This class contains all the test cases.
+Input                                     - This class return “Valid”, “Invalid”, “3 Invalid inputs” based on user input.
+InputOutput                      -This class is built for test case for console input validation.
+ValidDate                            - This class checks the date format and if the format is correct then checks Date, Month and year for validation.
+WeekDay                            - This return the day of week for a particular date.
+Zodiac                                   -This return the zodiac sign for a particular date.
+mainModule                      - This is the main module where user input has been taken and passed to all the other classes. The output from those classes are rephrased and given to the user.
+
+Note: All codes are kept under assignment2/COSC6353_4353_Assignment2/ folder and the test data sheet is kept with the name COSC_6353_4353_Assignment2_TestCase.xlsx under assignment2/ folder
+
+Instruction to Run the code: Create a Java Project and put all the classes. For running the Test Cases use Assignment2_Test and for running the main module use mainModule class.
+
+NOTE: 
+Make sure you commit to SVN after each iteration. This will help TA to verify the TDD transition.

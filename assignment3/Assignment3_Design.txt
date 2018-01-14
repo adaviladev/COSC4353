@@ -1,0 +1,34 @@
+Design steps:
+Description of the system:
+The board size will be picked by the user. It can be 1*1,2*2,3*3 and so on.
+This game will be two player game where user and computer will participate.
+User goes first in first game then it alternates for any subsequent games.
+There will be three difficluty levels of game: 1. easy, 2. medium, 3. hard
+	- For easy level computer generates random numbers. If a spot is already taken then another number is generated.
+	- For medium level computer checks if it can win in next move.
+	- For hard level computer always tries to pick spots to win the game. Random number generation is not needed for this. You will need some predfined moves based on user moves.
+User's symbol is 'x' and computer's symbol is 'o'.
+
+Design:
+1. The number of games played will be initialized to 1 and it will be incremented after each round to know who will be playing first in the game.
+2. User will be prompted to provide the size of the board. E.g. if user selects 2, then board size will be 2*2.
+3. User will be prompted again for enter the level of difficulties s/he wants to play.
+4. The number will one variable for checking the number of moves given in the game, to get whose turn is to play.
+   It will be initialized to 0 and for every move, it will be incremented.
+5. There will be a variable which will store the moves left and it will initialized by using the size of the board. e.g. if the board is a 3*3, the it will be initialized with 9 moves and it will decremented after each move.
+6. Before starting the game, all the variables will be reinitialized except the game number.
+7. The empty game board will be displayed and the first move will be defined by the game number. If #ofgame%2 is 0 then it will a user move, or else it will be a computer move. Decrement the moves left variable and increment the move variable.
+8. The will be one boolean variable which will store the value, whether the game is over or not and initially it will be false.
+9. The game will be played until there is a move remaining and the game is not over.
+   i) before every move check whether the game is over or not. If the game is over, then check who won the game by using both game number and move number variable. 
+   ii) If the game is over and move%2==1 and gamenumber%2==0 then the user won the game, else the computer won the       game.
+   iii) If the game is not over, then use both game number and move variable to decide who will the one to play next. If the move%2==1 then it will be a computer move or else it will be an user move. After the move completed increment the move variable by one.
+   iv) Now the display the board and check if the match is drawn or not by checking if remaning moves are 0 but the game is not over. If the game is drawn, then display the message and break out the game.
+
+10. For displaying the board, use 'x' for the user and 'o' for the computer and put the convinient sign at the exact position.
+11. For deciding the next move by the computer, it takes the current state of the board, level of the game and the move variable. 
+    i) if the level of the game is 1, then generate a random position which is not taken already.
+    ii) if the level of the game is 2, then first check for an empty place and check whether with this move the computer can win the game or not, if not then chose a random emplty place.
+    iii) if the level of the game is 3, then first search for an empty place and check if with this move it can win or not. if not, then it goes on a loop to search every user and computer moves to check which is the best move for the current board by playing every move combination until the end of the game.
+12. for checking whether any player won the game or not, check if there are same symbols present in any row column or diagonal.
+    If it is, then return true for the win.

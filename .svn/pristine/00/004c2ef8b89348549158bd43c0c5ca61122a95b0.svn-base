@@ -1,0 +1,58 @@
+package com.tdd.softwaredesign;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class ValidDate {
+	String Date;
+	public ValidDate(String Date)
+	{
+		this.Date=Date;
+	}
+	public String IsValidDate()
+	{
+		String valid;
+		try{
+		if (Date.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}"))
+			
+		{
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+            Date date;
+
+				date = sdf.parse(Date);
+
+            // Create a Calendar, going to use this to compare the resulting
+            // Date value, as the parser will auto correct the input
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+
+            // Split the basic input along the / delimeter
+            String parts[] = Date.split("/");
+            valid = "True";
+            // Check each part to make sure it matches the components of the date
+            if (Integer.parseInt(parts[0]) != cal.get(Calendar.MONTH) + 1) {
+                valid = "False";
+            } 
+            if (Integer.parseInt(parts[1]) != cal.get(Calendar.DATE)) {
+                valid = "False";
+            } 
+            if (Integer.parseInt(parts[2]) != cal.get(Calendar.YEAR)) {
+                valid = "False";
+            }
+			return valid;
+		}
+		else
+		{
+			return "False";
+		}
+		}catch(ParseException ex)
+		{
+			valid="False";
+			return valid;
+		}
+				
+	}
+}

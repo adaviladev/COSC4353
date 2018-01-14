@@ -1,0 +1,87 @@
+package com.tdd.softwaredesign;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+
+public class Input {
+	static String inputDate;
+	static int counter;
+	public Input(String inputDate_input)
+	{
+		inputDate=inputDate_input;
+	}
+	public static String checkInput()
+	{
+		if (new ValidDate(inputDate).IsValidDate()=="True")
+		{
+			return "Valid";
+		}
+		else
+		{
+			counter+=1;
+			if (counter<3)
+			{
+				return "Invalid";
+			}
+			else
+			{
+				return "3 Invalid inputs";
+			}
+		}
+	}
+	public static void main(String[] args) {
+        String validFormat;
+        String zodiacSign;
+        String dayOfWeek;
+        boolean loopBreak;
+        validFormat="false";
+        Input.counter=0;
+        Input.inputDate="";
+        loopBreak=false;
+        outerloop:
+        	
+		while(loopBreak==false)
+        {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Please enter your Date of Birth(mm/dd/yyyy):");
+			try {
+				Input.inputDate = br.readLine();
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+				loopBreak=true;
+				break outerloop;
+			}
+	        validFormat=Input.checkInput();
+	        if (validFormat=="Valid")
+	        {
+	        	System.out.println("Enter into system");
+	        	zodiacSign=new Zodiac(Input.inputDate).getZodiac();
+	        	dayOfWeek=new WeekDay(Input.inputDate).getDay();
+	        	System.out.println("You are born on " + dayOfWeek);
+	        	System.out.println("Your zodiac sign is " + zodiacSign);
+	        	Input.counter=0;
+	        	Input.inputDate="";
+	        	loopBreak=true;
+	        	break outerloop;
+	        }
+	        else if(validFormat=="Invalid")
+	        {
+	        	System.out.println("Wrong input format. Try again..");
+	        }
+	        else if (Input.counter==3)
+	        {
+	        	System.out.println("Wrong date for 3 times. You are redirecting to home page..");
+	        	loopBreak=true;
+	        	break outerloop;
+	        }
+	        else
+	        {
+	        	loopBreak=true;
+	        }
+        
+        }
+	}
+}
